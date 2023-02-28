@@ -1,11 +1,14 @@
 package task08_Student_Stream;
 
-import com.github.javafaker.Faker;
 
 import java.util.Objects;
 
 public class StudentName {
+    public String getname() {
+        return null;
+    }
 
+/*
     Faker faker = new Faker();
     String name = faker.name().firstName();
 
@@ -36,4 +39,6 @@ public class StudentName {
     public int hashCode() {
         return Objects.hash(faker, name);
     }
+    */
+
 }

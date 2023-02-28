@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Speaker extends OutputUnit {
     public Speaker(String name, Integer serialNumber, Instant manufacturingDate, UnitType unitType) {
-        super(name, serialNumber, manufacturingDate, unitType);
+        super(name, serialNumber, manufacturingDate);
     }
 
     private String speakerOutput;
@@ -39,5 +39,10 @@ public class Speaker extends OutputUnit {
         return "Speaker{" +
                 "speakerOutput='" + speakerOutput + '\'' +
                 '}';
+    }
+
+    @Override
+    public void process(String input) {
+
     }
 }

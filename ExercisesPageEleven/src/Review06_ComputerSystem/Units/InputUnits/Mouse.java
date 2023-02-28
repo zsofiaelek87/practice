@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Mouse extends InputUnit {
     public Mouse(String name, Integer serialNumber, Instant manufacturingDate, UnitType unitType) {
-        super(name, serialNumber, manufacturingDate, unitType);
+        super(name, serialNumber, manufacturingDate);
     }
 
     private Boolean mouseClicked;
@@ -39,5 +39,10 @@ public class Mouse extends InputUnit {
         return "Mouse{" +
                 "mouseClicked=" + mouseClicked +
                 '}';
+    }
+
+    @Override
+    public String process() {
+        return null;
     }
 }

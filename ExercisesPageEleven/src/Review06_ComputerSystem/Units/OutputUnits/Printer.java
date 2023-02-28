@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Printer extends OutputUnit {
     public Printer(String name, Integer serialNumber, Instant manufacturingDate, UnitType unitType) {
-        super(name, serialNumber, manufacturingDate, unitType);
+        super(name, serialNumber, manufacturingDate);
     }
 
     private String printerOutput;
@@ -39,5 +39,10 @@ public class Printer extends OutputUnit {
         return "Printer{" +
                 "printerOutput='" + printerOutput + '\'' +
                 '}';
+    }
+
+    @Override
+    public void process(String input) {
+
     }
 }
