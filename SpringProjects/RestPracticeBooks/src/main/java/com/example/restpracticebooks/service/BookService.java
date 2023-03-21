@@ -33,7 +33,7 @@ public class BookService {
 
     public Book getBookById(Integer bookId){
 
-        return null;
+        BookEntity bookEntity = bookRepository.;
     }
 
     public void deleteBookById(Integer bookId){

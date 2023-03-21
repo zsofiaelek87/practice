@@ -32,8 +32,8 @@ public class BookController {
 
     @GetMapping("/{bookid}")
     public BookDTO getBook(@PathVariable("bookid") Integer bookId){
-        //return bookService.getBookById(bookId);mapperbol jon majd
-        return null;
+        Book book = bookService.getBookById(bookId);
+        return bookMapper.convertModelToDto(book);
     }
 
     @DeleteMapping("/{bookid}")
