@@ -78,19 +78,3 @@ th {
   font-weight: bold;
 }
 
-.btn-danger {
-  background-color: red !important;
-}
-
-.btn-warning {
-  background-color: yellow !important;
-}
-.btn-success {
-  background-color: green !important;
-}
-.btn-primary {
-  background-color: blue !important;
-}
-.btn-basic {
-  background-color: grey !important;
-}

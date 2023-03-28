@@ -6,8 +6,8 @@ import axios from 'axios';
 
 let initialBook = {
   bookId: null,
-  bookName: "",
-  bookAuthor: ""
+  bookName: null,
+  bookAuthor: null
 }
 
 class App extends Component {
@@ -76,7 +76,7 @@ class App extends Component {
           <div>---Get all books---</div>
           <form onSubmit={this.handleGetAllButtonPushEvent}>
 
-            <button className="btn btn-basic">Get ALL books</button>
+            <button className="btn btn-default">Get ALL books</button>
 
           </form>
 
@@ -165,7 +165,7 @@ class App extends Component {
       .then(response => {
         let book = response.data;
         console.log(book);
-        this.setState({ book });
+        this.setState({ books: [book] });
       });
 
   }
