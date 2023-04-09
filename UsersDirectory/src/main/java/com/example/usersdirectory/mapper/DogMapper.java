@@ -11,7 +11,7 @@ public class DogMapper {
         Dog dog = new Dog();
         dog.setDogId(dogEntity.getDogId());
         dog.setDogName(dogEntity.getDogName());
-
+        dog.setOwnerName(dogEntity.getUserEntity().getUserName());
         return dog;
     }
 
@@ -19,6 +19,7 @@ public class DogMapper {
         DogDTO dogDTO = new DogDTO();
         dogDTO.setDogId(dog.getDogId());
         dogDTO.setDogName(dog.getDogName());
+        dogDTO.setOwnerName(dog.getOwnerName());
         return dogDTO;
     }
 
@@ -26,6 +27,7 @@ public class DogMapper {
         Dog dog = new Dog();
         dog.setDogId(dogDTO.getDogId());
         dog.setDogName(dogDTO.getDogName());
+        dog.setOwnerName(dogDTO.getOwnerName());
         return dog;
     }
 
@@ -33,6 +35,7 @@ public class DogMapper {
         DogEntity dogEntity = new DogEntity();
         dogEntity.setDogId(dog.getDogId());
         dogEntity.setDogName(dog.getDogName());
+        //TODO: fix it
         return dogEntity;
 }
 }

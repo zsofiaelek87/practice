@@ -6,10 +6,8 @@ public class DogDTO {
     private Integer dogId;
     private String dogName;
 
-    public DogDTO(Integer dogId, String dogName) {
-        this.dogId = dogId;
-        this.dogName = dogName;
-    }
+    private String ownerName;
+
 
     public DogDTO(){
 
@@ -31,17 +29,25 @@ public class DogDTO {
         this.dogName = dogName;
     }
 
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DogDTO dogDTO = (DogDTO) o;
-        return Objects.equals(dogId, dogDTO.dogId) && Objects.equals(dogName, dogDTO.dogName);
+        return Objects.equals(dogId, dogDTO.dogId) && Objects.equals(dogName, dogDTO.dogName) && Objects.equals(ownerName, dogDTO.ownerName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dogId, dogName);
+        return Objects.hash(dogId, dogName, ownerName);
     }
 
     @Override
@@ -49,6 +55,7 @@ public class DogDTO {
         return "DogDTO{" +
                 "dogId=" + dogId +
                 ", dogName='" + dogName + '\'' +
+                ", ownerName='" + ownerName + '\'' +
                 '}';
     }
 }

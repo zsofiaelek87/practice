@@ -5,6 +5,8 @@ import com.example.usersdirectory.mapper.UserMapper;
 import com.example.usersdirectory.repository.DogEntity;
 import com.example.usersdirectory.repository.UserEntity;
 import com.example.usersdirectory.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,20 +14,23 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
 @Service
 public class UserService {
 
-    UserMapper userMapper;
-    UserRepository userRepository;
+    private final Logger logger = LoggerFactory.getLogger(UserService.class);
+    private final UserMapper userMapper;
+    private final UserRepository userRepository;
 
-    DogMapper dogMapper;
+    private final DogMapper dogMapper;
 
 
 
     @Autowired
-    public UserService(UserMapper userMapper, UserRepository userRepository) {
+    public UserService(UserMapper userMapper, UserRepository userRepository, DogMapper dogMapper) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
+        this.dogMapper = dogMapper;
     }
 
     public List<User> getAllUsers(){
@@ -58,6 +63,8 @@ public class UserService {
         UserEntity userEntity = userEntityOptional.get();
         DogEntity dogEntity = dogMapper.convertModelToEntity(dog);
         userEntity.addDogEntity(dogEntity);
+        dogEntity.setUserEntity(userEntity);
+        logger.info("{}",userEntity);
         return userMapper.convertEntityToModel(userRepository.save(userEntity));
     }
 

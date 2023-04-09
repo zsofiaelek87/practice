@@ -36,12 +36,11 @@ public class DogController {
         return dogMapper.convertModelToDTO(dog);
     }
 
-    @PutMapping("/{dogId}")
-    public DogDTO updateDogById(@PathVariable("dogId") Integer dogId, @RequestBody DogDTO dogDTO) {
+    @PutMapping
+    public DogDTO updateDogById(@RequestBody DogDTO dogDTO) {
         Dog dog = dogMapper.convertDTOToModel(dogDTO);
-        dog.setDogId(dogId);
-        dog = dogService.updateDogById(dog);
-        return dogMapper.convertModelToDTO(dog);
+        Dog updatedDog = dogService.updateDogById(dog);
+        return dogMapper.convertModelToDTO(updatedDog);
     }
 
 

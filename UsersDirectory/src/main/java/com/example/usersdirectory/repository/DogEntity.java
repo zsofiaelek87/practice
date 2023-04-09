@@ -12,6 +12,7 @@ public class DogEntity {
     private Integer dogId;
     private String dogName;
 
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = {})
     @JoinColumn(name="userId", nullable=false)
     private UserEntity userEntity;
@@ -39,6 +40,15 @@ public class DogEntity {
     public void setDogName(String dogName) {
         this.dogName = dogName;
     }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
 
     @Override
     public boolean equals(Object o) {

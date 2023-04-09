@@ -3,10 +3,20 @@ package com.example.usersdirectory.mapper;
 import com.example.usersdirectory.controller.UserDTO;
 import com.example.usersdirectory.repository.UserEntity;
 import com.example.usersdirectory.service.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
 
 @Component
 public class UserMapper {
+
+    private final DogMapper dogMapper;
+
+    @Autowired
+    public UserMapper(DogMapper dogMapper) {
+        this.dogMapper = dogMapper;
+    }
 
     public User convertEntityToModel(UserEntity userEntity){
        User user = new User();
@@ -14,6 +24,7 @@ public class UserMapper {
        user.setUserName(userEntity.getUserName());
        user.setUserEmail(userEntity.getUserEmail());
        user.setUserNickname(userEntity.getUserNickname());
+       user.setDogs(userEntity.getDogs().stream().map(d-> dogMapper.convertEntityToModel(d)).collect(Collectors.toList()));
        return user;
     }
 
@@ -28,13 +39,12 @@ public class UserMapper {
     }
 
     public UserEntity convertModelToEntity(User user){
-        //TODO: dogs must be mapped too with a for cycle foreach, dogmapperel
-        //TODO: user dogjait atkonvertalni userentityben talalhato dogentity
         UserEntity userEntity = new UserEntity();
         userEntity.setUserId(user.getUserId());
         userEntity.setUserName(user.getUserName());
         userEntity.setUserEmail(user.getUserEmail());
         userEntity.setUserNickname(user.getUserNickname());
+        user.getDogs().stream().map(d-> dogMapper.convertModelToEntity(d)).forEach(d-> userEntity.addDogEntity(d));
         return userEntity;
     }
 

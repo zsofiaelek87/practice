@@ -53,6 +53,14 @@ public class User {
         this.userNickname = userNickname;
     }
 
+    public List<Dog> getDogs() {
+        return dogs;
+    }
+
+    public void setDogs(List<Dog> dogs) {
+        this.dogs = dogs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -19,9 +19,8 @@ public class UserEntity {
     private String userNickname;
     private final Instant createdAt = Instant.now();
 
-
     @OneToMany(mappedBy="userEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<DogEntity> dogs = new ArrayList<>();
+    private final List<DogEntity> dogs = new ArrayList<>();
 
     public UserEntity(Integer userId, String userName, String userEmail, String userNickname) {
         this.userId = userId;
@@ -69,6 +68,14 @@ public class UserEntity {
         return createdAt;
     }
 
+    public List<DogEntity> getDogs() {
+        return dogs;
+    }
+
+    public void addDogEntity(DogEntity dogEntity){
+        dogs.add(dogEntity);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,10 +97,7 @@ public class UserEntity {
                 ", userEmail='" + userEmail + '\'' +
                 ", userNickname='" + userNickname + '\'' +
                 ", createdAt=" + createdAt +
+                ", dogs=" + dogs +
                 '}';
-    }
-
-    public void addDogEntity(DogEntity dogEntity){
-        dogs.add(dogEntity);
     }
 }
