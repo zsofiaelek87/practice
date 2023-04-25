@@ -1,13 +1,14 @@
-package com.example.usersdirectory.service;
+package com.example.usersdirectory.dog.service;
 
-import com.example.usersdirectory.mapper.DogMapper;
-import com.example.usersdirectory.repository.DogEntity;
-import com.example.usersdirectory.repository.DogRepository;
-import com.example.usersdirectory.repository.UserEntity;
+import com.example.usersdirectory.dog.mapper.DogMapper;
+import com.example.usersdirectory.dog.repository.DogEntity;
+import com.example.usersdirectory.dog.repository.DogRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 @Service
 public class DogService {
@@ -34,11 +35,21 @@ public class DogService {
     }
 
     public Dog updateDogById(Dog dog) {
-        DogEntity dogEntity = dogMapper.convertModelToEntity(dog);
-        dogEntity.setDogId(dog.getDogId());
-        dogRepository.save(dogEntity);
-        return dog;
+        DogEntity existingDog = dogRepository.findById(dog.getDogId())
+                .orElseThrow(() -> new EntityNotFoundException("Dog not found"));
+
+        if (dog.getDogName() != null) {
+            existingDog.setDogName(dog.getDogName());
+        }
+        if (dog.getDogAge() != null) {
+            existingDog.setDogAge(dog.getDogAge());
+        }
+
+        DogEntity updatedDog = dogRepository.save(existingDog);
+        return dogMapper.convertEntityToModel(updatedDog);
+
     }
+
 
 
 }

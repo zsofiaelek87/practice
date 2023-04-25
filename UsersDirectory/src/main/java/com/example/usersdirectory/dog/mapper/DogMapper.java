@@ -1,8 +1,8 @@
-package com.example.usersdirectory.mapper;
+package com.example.usersdirectory.dog.mapper;
 
-import com.example.usersdirectory.controller.DogDTO;
-import com.example.usersdirectory.repository.DogEntity;
-import com.example.usersdirectory.service.Dog;
+import com.example.usersdirectory.dog.controller.DogDTO;
+import com.example.usersdirectory.dog.repository.DogEntity;
+import com.example.usersdirectory.dog.service.Dog;
 import org.springframework.stereotype.Component;
 @Component
 public class DogMapper {
@@ -11,6 +11,7 @@ public class DogMapper {
         Dog dog = new Dog();
         dog.setDogId(dogEntity.getDogId());
         dog.setDogName(dogEntity.getDogName());
+        dog.setDogAge(dogEntity.getDogAge());
         dog.setOwnerName(dogEntity.getUserEntity().getUserName());
         return dog;
     }
@@ -19,6 +20,7 @@ public class DogMapper {
         DogDTO dogDTO = new DogDTO();
         dogDTO.setDogId(dog.getDogId());
         dogDTO.setDogName(dog.getDogName());
+        dogDTO.setDogAge(dog.getDogAge());
         dogDTO.setOwnerName(dog.getOwnerName());
         return dogDTO;
     }
@@ -27,6 +29,7 @@ public class DogMapper {
         Dog dog = new Dog();
         dog.setDogId(dogDTO.getDogId());
         dog.setDogName(dogDTO.getDogName());
+        dog.setDogAge(dogDTO.getDogAge());
         dog.setOwnerName(dogDTO.getOwnerName());
         return dog;
     }
@@ -35,6 +38,7 @@ public class DogMapper {
         DogEntity dogEntity = new DogEntity();
         dogEntity.setDogId(dog.getDogId());
         dogEntity.setDogName(dog.getDogName());
+        dogEntity.setDogAge(dog.getDogAge());
         //TODO: fix it
         return dogEntity;
 }

@@ -1,6 +1,7 @@
-package com.example.usersdirectory.controller;
+package com.example.usersdirectory.user.controller;
 
-import com.example.usersdirectory.service.User;
+import com.example.usersdirectory.dog.controller.DogDTO;
+import com.example.usersdirectory.user.service.User;
 
 import java.util.List;
 import java.util.Objects;

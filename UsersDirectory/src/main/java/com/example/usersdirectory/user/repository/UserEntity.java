@@ -1,24 +1,35 @@
-package com.example.usersdirectory.service;
+package com.example.usersdirectory.user.repository;
 
+import com.example.usersdirectory.dog.repository.DogEntity;
+import jakarta.persistence.*;
+
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class User {
+@Entity
+@Table(name = "Users")
+public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     private String userName;
     private String userEmail;
     private String userNickname;
+    private final Instant createdAt = Instant.now();
 
-    private List<Dog> dogs;
+    @OneToMany(mappedBy="userEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private final List<DogEntity> dogs = new ArrayList<>();
 
-    public User(Integer userId, String userName, String userEmail, String userNickname) {
+    public UserEntity(Integer userId, String userName, String userEmail, String userNickname) {
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userNickname = userNickname;
     }
 
-    public User() {
+    public UserEntity() {
     }
 
     public Integer getUserId() {
@@ -53,34 +64,40 @@ public class User {
         this.userNickname = userNickname;
     }
 
-    public List<Dog> getDogs() {
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<DogEntity> getDogs() {
         return dogs;
     }
 
-    public void setDogs(List<Dog> dogs) {
-        this.dogs = dogs;
+    public void addDogEntity(DogEntity dogEntity){
+        dogs.add(dogEntity);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(userName, user.userName) && Objects.equals(userEmail, user.userEmail) && Objects.equals(userNickname, user.userNickname);
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(userId, that.userId) && Objects.equals(userName, that.userName) && Objects.equals(userEmail, that.userEmail) && Objects.equals(userNickname, that.userNickname) && Objects.equals(createdAt, that.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, userEmail, userNickname);
+        return Objects.hash(userId, userName, userEmail, userNickname, createdAt);
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserEntity{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", userNickname='" + userNickname + '\'' +
+                ", createdAt=" + createdAt +
+                ", dogs=" + dogs +
                 '}';
     }
 }

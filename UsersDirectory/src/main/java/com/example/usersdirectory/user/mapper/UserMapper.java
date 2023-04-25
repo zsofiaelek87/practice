@@ -1,8 +1,9 @@
-package com.example.usersdirectory.mapper;
+package com.example.usersdirectory.user.mapper;
 
-import com.example.usersdirectory.controller.UserDTO;
-import com.example.usersdirectory.repository.UserEntity;
-import com.example.usersdirectory.service.User;
+import com.example.usersdirectory.dog.mapper.DogMapper;
+import com.example.usersdirectory.user.controller.UserDTO;
+import com.example.usersdirectory.user.repository.UserEntity;
+import com.example.usersdirectory.user.service.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

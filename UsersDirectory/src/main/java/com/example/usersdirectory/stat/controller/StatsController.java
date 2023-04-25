@@ -1,13 +1,15 @@
-package com.example.usersdirectory.controller;
+package com.example.usersdirectory.stat.controller;
 
-import com.example.usersdirectory.mapper.DogMapper;
-import com.example.usersdirectory.mapper.UserMapper;
-import com.example.usersdirectory.service.StatsService;
+import com.example.usersdirectory.dog.controller.DogDTO;
+import com.example.usersdirectory.user.controller.UserWithDogDTO;
+import com.example.usersdirectory.dog.mapper.DogMapper;
+import com.example.usersdirectory.user.mapper.UserMapper;
+import com.example.usersdirectory.stat.service.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("stats")
@@ -20,6 +22,9 @@ public class StatsController {
     // 1 db controller a ket uj get methodshoz
     // stats service kalkulalashoz DO NOT USE REPOSITORIES DIRECTLY - use mappers with dog and user services
 
+    //servicebe mapet megirni, hogy adatbazisbol jonnon a stream apival (findall, stream, collect to map)
+    // getmappinget megirni
+
     private final StatsService statsService;
     private final UserMapper userMapper;
     private final DogMapper dogMapper;
@@ -31,11 +36,14 @@ public class StatsController {
         this.dogMapper = dogMapper;
     }
 
-    public Map<UserDTO, Integer> howManyDogsPerUser(){
-        return null;
+    @GetMapping("/dogs")
+    public UserWithDogDTO howManyDogsPerUser(){
+        UserWithDogDTO result = new UserWithDogDTO(statsService.getNumberOfDogByUserName());
+        return result;
     }
 
-    public DogDTO oldestDogByUser(UserDTO userDTO){
-        return null;
+    @GetMapping("dogs/{userId}")
+    public DogDTO oldestDogByUser(@PathVariable("userId") Integer userId){
+        return dogMapper.convertModelToDTO(statsService.getOldestDogByUser(userId));
     }
 }

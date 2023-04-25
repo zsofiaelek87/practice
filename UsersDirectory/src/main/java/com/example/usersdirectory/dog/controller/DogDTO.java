@@ -1,23 +1,18 @@
-package com.example.usersdirectory.service;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+package com.example.usersdirectory.dog.controller;
 
 import java.util.Objects;
 
-public class Dog {
-
+public class DogDTO {
     private Integer dogId;
     private String dogName;
 
     private String ownerName;
 
-    public Dog(Integer dogId, String dogName) {
-        this.dogId = dogId;
-        this.dogName = dogName;
-    }
+    private Integer dogAge;
 
-    public Dog() {
+
+    public DogDTO(){
+
     }
 
     public Integer getDogId() {
@@ -44,25 +39,34 @@ public class Dog {
         this.ownerName = ownerName;
     }
 
+    public Integer getDogAge() {
+        return dogAge;
+    }
+
+    public void setDogAge(Integer dogAge) {
+        this.dogAge = dogAge;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Dog dog = (Dog) o;
-        return Objects.equals(dogId, dog.dogId) && Objects.equals(dogName, dog.dogName) && Objects.equals(ownerName, dog.ownerName);
+        DogDTO dogDTO = (DogDTO) o;
+        return Objects.equals(dogId, dogDTO.dogId) && Objects.equals(dogName, dogDTO.dogName) && Objects.equals(ownerName, dogDTO.ownerName) && Objects.equals(dogAge, dogDTO.dogAge);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dogId, dogName, ownerName);
+        return Objects.hash(dogId, dogName, ownerName, dogAge);
     }
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "DogDTO{" +
                 "dogId=" + dogId +
                 ", dogName='" + dogName + '\'' +
                 ", ownerName='" + ownerName + '\'' +
+                ", dogAge=" + dogAge +
                 '}';
     }
 }

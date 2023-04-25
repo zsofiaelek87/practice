@@ -1,8 +1,8 @@
-package com.example.usersdirectory.controller;
+package com.example.usersdirectory.dog.controller;
 
-import com.example.usersdirectory.mapper.DogMapper;
-import com.example.usersdirectory.service.Dog;
-import com.example.usersdirectory.service.DogService;
+import com.example.usersdirectory.dog.mapper.DogMapper;
+import com.example.usersdirectory.dog.service.Dog;
+import com.example.usersdirectory.dog.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

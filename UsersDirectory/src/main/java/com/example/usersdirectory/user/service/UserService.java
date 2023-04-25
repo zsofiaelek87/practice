@@ -1,10 +1,11 @@
-package com.example.usersdirectory.service;
+package com.example.usersdirectory.user.service;
 
-import com.example.usersdirectory.mapper.DogMapper;
-import com.example.usersdirectory.mapper.UserMapper;
-import com.example.usersdirectory.repository.DogEntity;
-import com.example.usersdirectory.repository.UserEntity;
-import com.example.usersdirectory.repository.UserRepository;
+import com.example.usersdirectory.dog.service.Dog;
+import com.example.usersdirectory.dog.mapper.DogMapper;
+import com.example.usersdirectory.user.mapper.UserMapper;
+import com.example.usersdirectory.dog.repository.DogEntity;
+import com.example.usersdirectory.user.repository.UserEntity;
+import com.example.usersdirectory.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
