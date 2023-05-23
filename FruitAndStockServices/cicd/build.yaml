@@ -15,5 +15,6 @@ steps:
 
   - script: |
       ./mvnw clean package
+    workingDirectory: FruitAndStockServices
     displayName: 'Create jar'
 
