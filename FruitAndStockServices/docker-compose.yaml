@@ -1,0 +1,27 @@
+services:
+  fruitmock:
+    build: ./FruitMockService
+    ports:
+      - "8091:8080"
+    networks:
+      - fruits
+
+  stockmock:
+    build: ./StockMockService
+    ports:
+      - "8092:8080"
+    networks:
+      - fruits
+
+  fruitshop:
+    build: ./FruitShop
+    ports:
+      - "8080:8080"
+    depends_on:
+      - stockmock
+      - fruitmock
+    networks:
+      - fruits
+
+networks:
+  fruits: {}

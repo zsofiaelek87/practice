@@ -1,0 +1,19 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '19'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+    displayName: 'Install Java19'
+
+  - script: |
+      java --version
+    displayName: 'Check Java version'
+
+  - script: |
+      ./mvnw clean package
+    displayName: 'Create jar'
+

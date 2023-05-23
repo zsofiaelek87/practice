@@ -1,6 +1,6 @@
-package com.fruitshop.web.test.client;
+package com.fruitshop.client;
 
-import com.fruitshop.web.test.client.dto.ShopStockResponse;
+import com.fruitshop.client.dto.ShopStockResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(name="StockService", url="http://localhost:8092/stock" )
+@FeignClient(name="StockService", url="http://stockmock:8080/stock" )
 public interface StockClient {
 
     @RequestMapping(path="/{fruitId}", method = RequestMethod.GET, consumes = "application/json")

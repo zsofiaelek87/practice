@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/stock")
 public class StockRestController {
-    @RequestMapping(path="/{fruitId}", method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(path="/{fruitId}", method = RequestMethod.GET, produces = "application/json")
     ResponseEntity<List<ShopStockResponse>> getStockByFruitId(@PathVariable(name = "fruitId") String fruitId){
         ShopStockResponse shopStockResponse = new ShopStockResponse();
         shopStockResponse.setId(UUID.randomUUID().toString());

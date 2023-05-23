@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.fruitshop.web.test</groupId>
-    <artifactId>fruitshop-web-test</artifactId>
+    <artifactId>fruitshop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

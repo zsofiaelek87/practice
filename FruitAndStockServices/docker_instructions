@@ -1,0 +1,3 @@
+docker rm -f $(docker ps -aq) # stop running containers
+docker rmi -f $(docker images -aq) # delete images
+yes Y | docker volume prune # clear docker daemon cache

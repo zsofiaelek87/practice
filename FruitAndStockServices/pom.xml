@@ -24,6 +24,7 @@
 	<modules>
 		<module>FruitMockService</module>
 		<module>StockMockService</module>
+		<module>FruitShop</module>
 
 	</modules>
 
