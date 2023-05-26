@@ -14,6 +14,10 @@ steps:
     displayName: 'Check Java version'
 
   - script: |
+      chmod 745 ./mvnw.cmd
+    displayName: 'Set permission for folder'
+
+  - script: |
       ./mvnw clean package
     workingDirectory: FruitAndStockServices
     displayName: 'Create jar'
