@@ -6,7 +6,6 @@ steps:
     inputs:
       versionSpec: '19'
       jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
     displayName: 'Install Java19'
 
   - script: |
