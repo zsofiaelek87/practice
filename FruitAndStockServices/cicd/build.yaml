@@ -14,6 +14,8 @@ steps:
     displayName: 'Check Java version'
 
   - script: |
+      pwd
+      ls -l
       chmod 745 ./mvnw.cmd
     displayName: 'Set permission for folder'
 
