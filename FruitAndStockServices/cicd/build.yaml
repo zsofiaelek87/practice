@@ -4,9 +4,10 @@ pool:
 steps:
   - task: JavaToolInstaller@0
     inputs:
-      versionSpec: '19'
+      versionSpec: '17'
       jdkArchitectureOption: 'x64'
-    displayName: 'Install Java19'
+      jdkSourceOption: 'PreInstalled'
+    displayName: 'Install Java17'
 
   - script: |
       java --version
