@@ -1,6 +1,9 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+  - group: DockerHub
+
 steps:
   - task: JavaToolInstaller@0
     inputs:
@@ -24,4 +27,12 @@ steps:
       docker images | grep aggregator
     workingDirectory: FruitAndStockServices/FruitShop
     displayName: 'Create docker image'
+
+  - script: |
+      tag=$(git rev-parse --short HEAD)
+      docker tag aggregator:$tag zsofiaelek/fruitshop:$tag
+      docker login docker.io -u $(dockeruser) -p $(dockerpw)
+      docker push zsofiaelek/fruitshop:$tag
+    displayName: 'Upload docker image'
+    
 
