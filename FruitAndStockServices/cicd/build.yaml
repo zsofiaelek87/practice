@@ -17,6 +17,7 @@ steps:
       pwd
       ls -l
       chmod 745 ./mvnw.cmd
+    workingDirectory: FruitAndStockServices
     displayName: 'Set permission for folder'
 
   - script: |
