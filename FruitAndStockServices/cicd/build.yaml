@@ -13,15 +13,15 @@ steps:
       java --version
     displayName: 'Check Java version'
 
-  - script: |
-      pwd
-      ls -l
-      chmod 745 ./mvnw.cmd
-    workingDirectory: FruitAndStockServices
-    displayName: 'Set permission for folder'
+  #- script: |
+  #   pwd
+  #   ls -l
+  #   chmod 745 ./mvnw.cmd
+  # workingDirectory: FruitAndStockServices
+  # displayName: 'Set permission for folder'
 
   - script: |
-      ./mvnw clean package
+      mvn clean package
     workingDirectory: FruitAndStockServices
     displayName: 'Create jar'
 
