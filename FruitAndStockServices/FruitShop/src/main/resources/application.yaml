@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://fruitshop-admin:${DB_PASSWORD}@zsofiadb:mdtm6it:mongodb:net/FruitAggregatedResponses?retryWrites=true&w=majority

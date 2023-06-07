@@ -34,5 +34,6 @@ steps:
       docker login docker.io -u $(dockeruser) -p $(dockerpw)
       docker push zsofiaelek/fruitshop:$tag
     displayName: 'Upload docker image'
-    
+
+
 

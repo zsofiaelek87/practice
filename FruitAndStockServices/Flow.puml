@@ -1,0 +1,60 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+actor Alice
+autonumber
+
+Alice -> FruitController: HTTP GET /fruits/apple
+FruitController -> FruitService: getAllFruitDetails ("apple")
+
+FruitService -> FruitClient: getFruitIdByName("apple")
+
+FruitService <-- FruitClient: ResponseEntity
+note right
+  HTTP 200
+  {
+      "id": "fruitId"
+  }
+end note
+
+FruitService -> FruitClient: getFruitPriceById("fruitId")
+FruitService <-- FruitClient: ResponseEntity
+note right
+HTTP 200
+{
+    "id": "fruitId",
+    "currency": "EUR",
+    "price": "120.03"
+}
+end note
+
+FruitService -> StockClient: getStockByFruitId("fruitId")
+StockClient --> FruitService: ResponseEntity
+note right
+HTTP 200
+[
+    {
+        "id": "shopId1"
+        "stock": 0
+    },
+    {
+        "id": "shopId2"
+        "stock": 3
+    }
+]
+end note
+
+FruitService --> FruitController: AggregatedFruitResponse
+FruitController --> Alice: ResponseEntity
+note right
+{
+    "id": "fruitId",
+    "name": "fruitName",
+    "currency": "GBP",
+    "price": "123.56",
+    "availableAt": [
+        "shopId1",
+        "shopId2"
+    ]
+}
+end note
+@enduml

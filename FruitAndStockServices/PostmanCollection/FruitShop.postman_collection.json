@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "10c1504c-94f4-4533-8fbf-206b82214ed0",
+		"name": "FruitShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26266130"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fruits/apple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fruits",
+						"apple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request FruitMock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/fruits/apple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"fruits",
+						"apple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request StockMock",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8092/stock/apple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8092",
+					"path": [
+						"stock",
+						"apple"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
