@@ -22,6 +22,9 @@ services:
       - fruitmock
     networks:
       - fruits
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
+
 
 networks:
   fruits: {}

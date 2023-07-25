@@ -22,18 +22,32 @@ steps:
     displayName: 'Create jar'
 
   - script: |
-      tag=$(git rev-parse --short HEAD)
-      docker build --tag aggregator:$tag .
-      docker images | grep aggregator
-    workingDirectory: FruitAndStockServices/FruitShop
-    displayName: 'Create docker image'
+      docker login docker.io -u $(dockeruser) -p $(dockerpw)
+    displayName: 'Login to Docker Hub'
 
   - script: |
-      tag=$(git rev-parse --short HEAD)
-      docker tag aggregator:$tag zsofiaelek/fruitshop:$tag
-      docker login docker.io -u $(dockeruser) -p $(dockerpw)
+      tag=fruitshop-$(git rev-parse --short HEAD)
+      docker build --tag zsofiaelek/fruitshop:$tag .
       docker push zsofiaelek/fruitshop:$tag
-    displayName: 'Upload docker image'
+    workingDirectory: FruitAndStockServices/FruitShop
+    displayName: 'Create and push fruitshop docker image'
+
+  - script: |
+      tag=fruitmock-$(git rev-parse --short HEAD)
+      docker build --tag zsofiaelek/fruitshop:$tag .
+      docker push zsofiaelek/fruitshop:$tag
+    workingDirectory: FruitAndStockServices/FruitMockService
+    displayName: 'Create and push fruitmock docker image'
+
+  - script: |
+      tag=stockmock-$(git rev-parse --short HEAD)
+      docker build --tag zsofiaelek/fruitshop:$tag .
+      docker push zsofiaelek/fruitshop:$tag
+    workingDirectory: FruitAndStockServices/StockMockService
+    displayName: 'Create and push stockmock docker image'
+
+
+
 
 
 

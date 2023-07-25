@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fruitshop-deployment
+  namespace: fruit
+  labels:
+    app: fruitshop
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fruitshop
+  template:
+    metadata:
+      labels:
+        app: fruitshop
+    spec:
+      containers:
+        - name: fruitshop
+          image: zsofiaelek/fruitshop:d3776fb
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          env:
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: fruit-config
+                  key: db.name
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                name: fruit-secret
+                key: db.password
+            - name: FRUIT_FRUIT_CLIENT_ENDPOINT
+              value: http://fruitmock:8080/fruits
+            - name: FRUIT_STOCK_CLIENT_ENDPOINT
+              value: http://stockmock:8080/stock

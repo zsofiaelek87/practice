@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name="FruitService", url="http://fruitmock:8080/fruits" )
+@FeignClient(name="FruitService", url="${fruit.fruitClient.endpoint}" )
 public interface FruitClient {
 
     @RequestMapping(path="/{name}", method = RequestMethod.GET, consumes = "application/json")

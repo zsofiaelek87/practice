@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fruit-config
+  namespace: fruit
+data:
+  db.name: FruitAggregatedResponses

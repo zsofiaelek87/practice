@@ -1,0 +1,46 @@
+kinds:
+node / namespace / pod
+Namespace
+Daemonset: 1 pod per node
+    Deployment: how many pods sets, but it is not set which node, focuses on the number, restart, throw out, same type of pods
+        Replicaset: keep the number of pods in a range
+            Pods
+Ingress: select which service to use
+Service: like a loadbalancer, select which instant to use from same type of pods (private IP/port based selection),
+    RR: round robin strategy, one to the next
+    random: random to the next
+
+Deployment together with service
+If there are multiple service, use ingress which one to use
+The cluster can only be called through ingress from the outside public IP,
+BaseURL finds Ingress, then using URL to cut information to serve microservices
+add firewall to Ingress (https required, which ports, IPs to accept requests)
+everything has a costs, if no security is required, one service can manage the rest of the services (cluster IP vs loadbalancer)
+loadbalancer have an automatic public IP - you have to pay for IP, domain name too
+
+DNS setup
+A: if IP is known
+CNAME: if other domain is know (redirect)
+MX: SMTP setup for email service
+NS: i dont know the IP, check these name servers (domain hoster)
+
+http default port 80
+https default port 443
+
+curl
+netcat
+ping
+
+
+kubectl get nodes // important which version of kubernetes we use, list how many VMs
+kubectl describe node minikube // status of the nodes (conditions),
+    if too many memory is used -> memory pressure, 1000m = 1 core
+    if too many data is used -> disk pressure
+    if too many process is used -> PIDpressure
+    if any of this happens, deletes it and start a new container
+    if happens: create new, if works, delete the bad
+    events: it tried to start, it managed to start, checking resources etc -> logger
+    i.e. this container should be between 500-750M, and if overrun it try to resolve
+
+
+kubectl exec -it azure-vote-back-7f96bf6f95-2rlbq /bin/sh -n voting -> look inside the pod what is running

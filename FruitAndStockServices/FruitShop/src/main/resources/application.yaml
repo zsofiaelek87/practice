@@ -1,4 +1,10 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://fruitshop-admin:${DB_PASSWORD}@zsofiadb:mdtm6it:mongodb:net/FruitAggregatedResponses?retryWrites=true&w=majority
+      uri: mongodb+srv://fruitshop-admin:${DB_PASSWORD}@zsofiadb.mdtm6it.mongodb.net/${DB_NAME:FruitAggregatedResponses}?retryWrites=true&w=majority
+
+fruit:
+  fruitClient:
+    endpoint: http://fruitmock:8080/fruits
+  stockClient:
+    endpoint: http://stockmock:8080/stock
